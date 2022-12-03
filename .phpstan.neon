@@ -1,6 +1,6 @@
 parameters:
     level: 1
     paths:
-        - ./shopware6-distance-based-shipping 
+        - ./DistanceBasedShippingCost 
     fileExtensions:
         - php
