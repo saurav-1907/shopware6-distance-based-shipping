@@ -48,9 +48,7 @@ class CheckoutConfirmPageLoadedEventSubscriber implements EventSubscriberInterfa
                     AddressHelper::getShippingAddressAsStr($event->getSalesChannelContext()->getShippingLocation()->getAddress())
                 );
 
-                $distanceLabel = sprintf("%s %s", $this->getDistanceLabel($config, $distanceInMeters),
-                    $this->getMetricLabel($config)
-                );
+                $distanceLabel = sprintf("%s %s", $this->getDistanceLabel($config, $distanceInMeters), $this->getMetricLabel($config));
 
                 $data['distanceBasedShippingCostData'] = [
                     'shippingMethodId' => $config->getShippingMethodId(),

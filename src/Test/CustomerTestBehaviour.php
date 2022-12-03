@@ -18,8 +18,8 @@ use Shopware\Core\System\SalesChannel\Context\SalesChannelContextService;
 use Shopware\Core\System\SalesChannel\SalesChannelContext;
 use Shopware\Core\Test\TestDefaults;
 
-trait CustomerTestBehaviour {
-
+trait CustomerTestBehaviour
+{
     use IntegrationTestBehaviour;
 
     protected function createTestCustomer(?string $password, ?string $email, Context $context): ?CustomerEntity
@@ -66,7 +66,7 @@ trait CustomerTestBehaviour {
         /** @var \Shopware\Core\Checkout\Customer\CustomerEntity $customer */
         $customer = $this->getContainer()->get('customer.repository')->search(new Criteria([$customerId]), $context)->first();
 
-        if(!$customer){
+        if (!$customer) {
             throw new \RuntimeException('Test: Customer not created');
         }
 
@@ -88,7 +88,6 @@ trait CustomerTestBehaviour {
             ->addFilter(new EqualsFilter('iso', 'DE'));
 
         return $repository->search($criteria, $context)->first()->getId();
-
     }
 
     protected function createSalesChannelContextWithLoggedInCustomer(Context $context): SalesChannelContext

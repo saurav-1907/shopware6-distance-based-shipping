@@ -68,7 +68,6 @@ class GoogleMapsApiService
                 $this->cache->save($cacheItem);
 
                 return $content['rows'][0]['elements'][0]['distance']['value'];
-
             }
             throw new GoogleMapsApiResponseException("Error Communicating with Google Maps API", 500);
         } catch (\Exception|GuzzleException|InvalidArgumentException $e) {

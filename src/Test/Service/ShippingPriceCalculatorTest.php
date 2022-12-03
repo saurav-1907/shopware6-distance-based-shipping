@@ -73,5 +73,4 @@ class ShippingPriceCalculatorTest extends TestCase
 
         static::assertGreaterThan(0, $cost);
     }
-
 }
