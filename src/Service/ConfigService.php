@@ -14,8 +14,7 @@ class ConfigService
 
     public function __construct(
         EntityRepositoryInterface $configRepo
-    )
-    {
+    ) {
         $this->configRepo = $configRepo;
     }
 
@@ -62,5 +61,4 @@ class ConfigService
             throw new InvalidDistanceBasedShippingCostConfigException("Store Address is not set");
         }
     }
-
 }

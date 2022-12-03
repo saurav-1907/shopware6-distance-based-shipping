@@ -21,8 +21,7 @@ class CheckoutConfirmPageLoadedEventSubscriber implements EventSubscriberInterfa
     public function __construct(
         ConfigService        $configService,
         GoogleMapsApiService $gmapsApiService
-    )
-    {
+    ) {
         $this->configService = $configService;
         $this->gmapsApiService = $gmapsApiService;
     }
@@ -43,15 +42,13 @@ class CheckoutConfirmPageLoadedEventSubscriber implements EventSubscriberInterfa
         try {
             $config = $this->configService->getValidConfig($event->getContext());
             if ($config->getShippingMethodId() === $event->getSalesChannelContext()->getShippingMethod()->getId()) {
-
                 $distanceInMeters = $this->gmapsApiService->getDistanceInMeters(
                     $config->getGoogleMapsApiKey(),
                     $config->getStoreAddress(),
                     AddressHelper::getShippingAddressAsStr($event->getSalesChannelContext()->getShippingLocation()->getAddress())
                 );
 
-                $distanceLabel = sprintf("%s %s",
-                    $this->getDistanceLabel($config, $distanceInMeters),
+                $distanceLabel = sprintf("%s %s", $this->getDistanceLabel($config, $distanceInMeters),
                     $this->getMetricLabel($config)
                 );
 
@@ -62,9 +59,7 @@ class CheckoutConfirmPageLoadedEventSubscriber implements EventSubscriberInterfa
 
                 $event->getPage()->assign($data);
             }
-
         } catch (\Exception $e) {
-
             $config = $this->configService->getUnvalidatedConfig($event->getContext());
 
             if ($config && $config->getShippingMethodId() === $event->getSalesChannelContext()->getShippingMethod()->getId()) {

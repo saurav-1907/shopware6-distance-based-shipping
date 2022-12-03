@@ -128,8 +128,5 @@ class CheckoutConfirmPageTest extends TestCase
     protected function getPageLoader()
     {
         return $this->getContainer()->get(CheckoutConfirmPageLoader::class);
-
     }
-
-
 }

@@ -8,9 +8,7 @@ class AddressHelper
 {
     public static function getShippingAddressAsStr(CustomerAddressEntity $customerAddress): string
     {
-        return sprintf('%s, %s, %s',
-            $customerAddress->getStreet(),
-            $customerAddress->getCity(),
+        return sprintf('%s, %s, %s',$customerAddress->getStreet(), $customerAddress->getCity(),
             $customerAddress->getZipcode() . ($customerAddress->getCountry() ? ", " . $customerAddress->getCountry()->getName() : ""),
         );
     }

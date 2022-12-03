@@ -409,5 +409,4 @@ class MagmodulesDistanceBasedShippingCostEntity extends Entity
     {
         $this->shippingMethodId = $shippingMethodId;
     }
-
 }

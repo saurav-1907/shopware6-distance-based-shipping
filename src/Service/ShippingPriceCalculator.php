@@ -27,8 +27,7 @@ class ShippingPriceCalculator
         ConfigService             $configService,
         EntityRepositoryInterface $priceMatrixRepo,
         GoogleMapsApiService      $mapsApiService
-    )
-    {
+    ) {
         $this->configService = $configService;
         $this->priceMatrixRepo = $priceMatrixRepo;
         $this->mapsApiService = $mapsApiService;
@@ -98,9 +97,6 @@ class ShippingPriceCalculator
                 $price += $zone->getPrice() * $distanceInMetric;
             }
         }
-
         return $price;
     }
-
-
 }

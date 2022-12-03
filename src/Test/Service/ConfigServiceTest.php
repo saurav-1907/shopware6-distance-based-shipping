@@ -4,7 +4,7 @@ namespace Magmodules\DistanceBasedShippingCost\Test\Service;
 
 use Doctrine\DBAL\Connection;
 use Magmodules\DistanceBasedShippingCost\Core\Content\MagmodulesDistanceBasedShippingCost\MagmodulesDistanceBasedShippingCostConstants;
-use Magmodules\DistanceBasedShippingCost\Core\Content\MagmodulesDistanceBasedShippingCost\MagmodulesDistanceBasedShippingCostEntity;
+use Magmodules\DistanceBasedShippingCost\Core\Content\MagmodulesDistanceBasedShippingCost\MagmodulesDistanceBasedShippingCostEntity as MagmodulesDistanceBasedShippingCostEntityAlias;
 use Magmodules\DistanceBasedShippingCost\Exception\InvalidDistanceBasedShippingCostConfigException;
 use Magmodules\DistanceBasedShippingCost\Service\ConfigService;
 use PHPUnit\Framework\TestCase;
@@ -14,14 +14,12 @@ use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\Test\TestCaseBase\IntegrationTestBehaviour;
 use Shopware\Core\Framework\Uuid\Uuid;
 
-
 class ConfigServiceTest extends TestCase
 {
     use IntegrationTestBehaviour;
-
     private Connection $connection;
     private Context $context;
-    private ?MagmodulesDistanceBasedShippingCostEntity $config;
+    private ?MagmodulesDistanceBasedShippingCostEntityAlias $config;
     private ConfigService $configService;
 
     /**

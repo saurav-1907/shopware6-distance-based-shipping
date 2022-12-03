@@ -34,8 +34,7 @@ class DeliveryCalculatorDecorator extends DeliveryCalculator
         ShippingPriceCalculator   $distanceBasedShippingPriceCalculator,
         EntityRepositoryInterface $entityRepository,
         QuantityPriceCalculator   $priceCalculator
-    )
-    {
+    ) {
         $this->origCalculator = $origCalculator;
         $this->distanceBasedShippingPriceCalculator = $distanceBasedShippingPriceCalculator;
         $this->distanceBasedRepo = $entityRepository;

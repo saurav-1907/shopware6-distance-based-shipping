@@ -9,7 +9,6 @@ use Psr\Cache\InvalidArgumentException;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
 use Symfony\Component\HttpFoundation\Response;
 
-
 class GoogleMapsApiService
 {
     /** @var string */
@@ -71,9 +70,7 @@ class GoogleMapsApiService
                 return $content['rows'][0]['elements'][0]['distance']['value'];
 
             }
-
             throw new GoogleMapsApiResponseException("Error Communicating with Google Maps API", 500);
-
         } catch (\Exception|GuzzleException|InvalidArgumentException $e) {
             throw new GoogleMapsApiResponseException($e->getMessage(), 500);
         }
