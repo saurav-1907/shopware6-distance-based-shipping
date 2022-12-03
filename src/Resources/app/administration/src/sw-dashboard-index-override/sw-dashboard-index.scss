@@ -1,0 +1,94 @@
+.mm-dashboard-card__grid-container {
+
+    max-width: 960px;
+    margin: 32px auto;
+    padding: 32px;
+    background: #0000000d;
+    color: #52667a;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: .1px;
+
+    .sw-card {
+
+        margin: 0 auto 32px;
+
+        .company-info{
+            text-align: center;
+        }
+        .sw-card-section.sw-card-section--slim{
+            padding: 5px 0;
+        }
+
+        .sw-dashboard-index__card-img {
+            height: 80px;
+            width: 80px;
+        }
+
+        .sw-dashboard-index__card-title{
+            font-weight: bold;
+        }
+
+        .sw-dashboard-index__card-meta-container{
+            display: flex;
+            flex-direction: row;
+        }
+
+        .sw-dashboard-index__card-meta {
+            flex: 1;
+            text-align: center;
+            white-space: nowrap;
+            margin: 15px 0 0 0;
+            padding: 0;
+        }
+
+        .sw-dashboard-index__card-company-name{
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+    }
+
+    .mm-dashboard-card__grid {
+
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 24px;
+        grid-row-gap: 0;
+
+        .mm-dashboard-card__card {
+            padding: 21px 27px;
+            background-color: #fff;
+            border: 1px solid #d1d9e0;
+            border-radius: 4px;
+            box-shadow: 0 4px 9px 0 rgba(120, 138, 155, .05);
+        }
+
+        .mm-dashboard-card__title {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .mm-dashboard-card__description {
+            margin-bottom: 5px;
+        }
+
+        .mm-dashboard-card__cover-image {
+            object-fit: cover;
+            width: 100%;
+            margin-bottom: 5px;
+        }
+
+        .mm-dashboard-card__button {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 5px;
+            background: #83c078;
+            color: #fff;
+        }
+
+        .mm-dashboard-card__button:hover:not(.mm-dashboard-card__button--disabled), .mm-dashboard-card__button:hover:not([disabled]) {
+            background: #6cad65;
+        }
+    }
+}

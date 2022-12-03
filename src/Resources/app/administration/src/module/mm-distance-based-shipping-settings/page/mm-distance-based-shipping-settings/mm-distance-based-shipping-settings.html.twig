@@ -1,0 +1,69 @@
+{% block mm_distance_based_shipping_settings_page %}
+    <sw-page class="mm-distance-based-shipping-settings">
+
+        <template slot="search-bar">
+            <sw-search-bar/>
+        </template>
+
+        <template #language-switch>
+            <sw-language-switch @on-change="onChangeLanguage"/>
+        </template>
+
+        <template slot="smart-bar-header">
+            {% block mm_distance_based_shipping_settings_page_smart_bar_header_title %}
+                <h2>
+                    {% block mm_distance_based_shipping_settings_page_smart_bar_header_title_text %}
+                        {{ $tc('sw-settings.index.title') }}
+                        <sw-icon
+                            name="small-arrow-medium-right"
+                            small
+                        />
+                        {{ $tc('mm-distance-based-shipping-settings.general.textHeadline') }}
+                    {% endblock %}
+
+                    {% block mm_distance_based_shipping_settings_page_smart_bar_header_amount %}
+                        <span
+                            v-if="false"
+                            class="sw-page__smart-bar-amount">
+                            ({{ total }})
+                        </span>
+                    {% endblock %}
+                </h2>
+            {% endblock %}
+        </template>
+
+        {# main content #}
+        <template slot="content">
+            {% block googlereview_configuration_content_card_channel_config_sales_channel %}
+                <template #select="{ onInput, selectedSalesChannelId }">
+                    <sw-card :title="$tc('global.entities.sales_channel', 2)">
+                        {% block biller_configuration_content_card_channel_config_sales_channel_card_title %}
+                            <sw-single-select v-model="selectedSalesChannelId"
+                                              labelProperty="translated.name"
+                                              valueProperty="id"
+                                              :isLoading="isLoading"
+                                              :options="salesChannels"
+                                              @change="onInput">
+                            </sw-single-select>
+                        {% endblock %}
+                    </sw-card>
+                </template>
+            {% endblock %}
+
+            {% block mm_distance_based_shipping_settings_tabs %}
+                <sw-tabs position-identifier="mm-distance-based-shipping-settings">
+                    <sw-tabs-item :route="{ name: 'mm.distance.based.shipping.settings.index.general' }">
+                        {{ $tc('mm-distance-based-shipping-settings.page.general.tabLabel') }}
+                    </sw-tabs-item>
+
+                    <sw-tabs-item :route="{ name: 'mm.distance.based.shipping.settings.index.shipping' }">
+                        {{ $tc('mm-distance-based-shipping-settings.page.shipping.tabLabel') }}
+                    </sw-tabs-item>
+                </sw-tabs>
+            {% endblock %}
+
+            <router-view ref="tabContent"/>
+
+        </template>
+    </sw-page>
+{% endblock %}

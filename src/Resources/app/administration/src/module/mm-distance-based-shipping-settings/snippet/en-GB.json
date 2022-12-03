@@ -1,0 +1,55 @@
+{
+    "mm-distance-based-shipping-settings": {
+        "general": {
+            "mainMenuItemGeneral": "Distance Based Shipping",
+            "textHeadline": "Distance Based Shipping",
+            "description": "Manage Distance Based Shipping settings here."
+        },
+        "common": {
+            "buttonSave": "Save",
+            "buttonCancel": "Cancel",
+            "messageSaveSuccess": "The configuration has been saved."
+        },
+        "page": {
+            "general": {
+                "tabLabel": "General",
+                "labelEnabled": "Enabled",
+                "labelGmapsApiKey": "Google Maps API key",
+                "labelStoreAddress": "Store Address",
+                "metricOption__Km": "Kilometer",
+                "metricOption__Mi": "Miles"
+            },
+            "shipping": {
+                "tabLabel": "Shipping",
+                "labelShippingMethod": "Shipping Method",
+                "labelMetric": "Metric",
+                "labelShippingPrice": "Shipping Price"
+            }
+        },
+        "shipping-price": {
+            "list": {
+                "textHeadline": "Shipping Price",
+                "buttonCreate": "Add zone",
+                "columnFrom": "From",
+                "columnTo": "To",
+                "columnPrice": "Price",
+                "columnType": "Type",
+                "columnType__1": "Fixed",
+                "columnType__2": "Per/metric",
+                "errorLoad": "Unable to load the Shipping Price matrix."
+            },
+            "detail": {
+                "textHeadlineNew": "New shipping price",
+                "textHeadlineEdit": "Edit shipping price",
+                "labelFrom": "From",
+                "labelTo": "To",
+                "labelPrice": "Price",
+                "labelType": "Type",
+                "selectionType__Fixed": "Fixed",
+                "selectionType__PerMetric": "Per/metric",
+                "errorLoad": "Unable to load the shipping price.",
+                "errorSave": "The shipping price could not be saved."
+            }
+        }
+    }
+}

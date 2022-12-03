@@ -1,0 +1,39 @@
+{% block mm_distance_based_shipping_settings_view_shipping_price %}
+
+<div class="mm-distance-based-shipping-settings-view-shipping-price">
+
+    <div class="mm-distance-based-shipping-settings-view-shipping-price__toolbar">
+
+        <sw-button
+            :router-link="{ name: 'mm.distance.based.shipping.settings.shippingPriceCreate' }"
+            class="mm-distance-based-shipping-settings-view-shipping-price__create-action"
+            variant="ghost"
+            :disabled="isLoading"
+            size="small"
+        >
+            {{ $tc('mm-distance-based-shipping-settings.shipping-price.list.buttonCreate') }}
+        </sw-button>
+    </div>
+
+    <sw-entity-listing
+        class="mm-distance-based-shipping-settings-shipping-price-list-grid"
+        :items="priceMatrix"
+        :columns="priceMatrixColumns()"
+        :repository="priceMatrixRepository"
+        detail-route="mm.distance.based.shipping.settings.shippingPriceDetail"
+        :allow-column-edit="false"
+        :show-settings="false"
+        :is-loading="isLoading"
+        :full-page="false"
+        :disable-data-fetching="true"
+        @column-sort="onSortColumn"
+        @page-change="onPageChange"
+    >
+
+        <template #column-type="{ item }">
+            {{ $tc(`mm-distance-based-shipping-settings.shipping-price.list.columnType__${item.type}`) }}
+        </template>
+    </sw-entity-listing>
+
+</div>
+{% endblock %}

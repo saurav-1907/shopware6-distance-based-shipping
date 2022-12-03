@@ -1,0 +1,19 @@
+.mm-distance-based-shipping-settings-view-shipping-price {
+    .sw-card__content {
+        background: #fff;
+        background-clip: padding-box;
+        border-radius: 4px;
+        border: 1px solid #d1d9e0;
+        position: relative;
+        padding: 0;
+    }
+    .mm-distance-based-shipping-settings-view-shipping-price__toolbar{
+        z-index: 10;
+        height: 83px;
+        display: flex;
+        padding: 25px 35px;
+        background-color: #f0f2f5;
+        border-bottom: 1px solid #d1d9e0;
+        justify-content: end;
+    }
+}

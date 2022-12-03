@@ -1,0 +1,79 @@
+{% block mm_distance_based_shipping_settings_shipping_price_detail %}
+    <sw-page class="mm-distance-based-shipping-settings-shipping-price-detail">
+
+        <template #smart-bar-header>
+            <h2>{{ displayName }}</h2>
+        </template>
+
+        <template #language-switch>
+            <sw-language-switch @on-change="onChangeLanguage"/>
+        </template>
+
+        <template #smart-bar-actions>
+            <sw-button
+                v-tooltip.bottom="tooltipCancel"
+                @click="onCancel"
+            >
+                {{ $tc('mm-distance-based-shipping-settings.common.buttonCancel') }}
+            </sw-button>
+
+            <sw-button-process
+                v-tooltip.bottom="tooltipSave"
+                class="mm-distance-based-shipping-settings-shipping-price-detail__save"
+                :is-loading="isLoading"
+                :process-success="isSaveSuccessful"
+                :disabled="false"
+                variant="primary"
+                @process-finish="saveFinish"
+                @click.prevent="onSave"
+            >
+                {{ $tc('mm-distance-based-shipping-settings.common.buttonSave') }}
+            </sw-button-process>
+        </template>
+
+        <template #content>
+            <sw-card-view>
+
+                <sw-card
+                    :is-loading="isLoading"
+                    position-identifier="mm-distance-based-shipping-settings-shipping-price-detail-form"
+                >
+                    <template v-if="shippingPrice">
+
+                        <sw-number-field
+                            v-model="shippingPrice.from"
+                            :label="$tc('mm-distance-based-shipping-settings.shipping-price.detail.labelFrom')"
+                            :error="shippingPriceFromError || invalidFromError"
+                            required
+                        />
+
+                        <sw-number-field
+                            v-model="shippingPrice.to"
+                            :label="$tc('mm-distance-based-shipping-settings.shipping-price.detail.labelTo')"
+                            :error="shippingPriceToError"
+                            required
+                        />
+
+                        <sw-number-field
+                            v-model="shippingPrice.price"
+                            :label="$tc('mm-distance-based-shipping-settings.shipping-price.detail.labelPrice')"
+                            :error="shippingPricePriceError"
+                            required
+                        />
+
+                        <sw-single-select
+                            v-model="shippingPrice.type"
+                            class="mm-distance-based-shipping-settings-shipping-price-detail__field-type"
+                            :options="shippingPriceTypes"
+                            :error="shippingPriceTypeError"
+                            :label="$tc('mm-distance-based-shipping-settings.shipping-price.detail.labelType')"
+                            required
+                            show-clearable-button
+                        />
+
+                    </template>
+                </sw-card>
+            </sw-card-view>
+        </template>
+    </sw-page>
+{% endblock %}

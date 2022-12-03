@@ -1,0 +1,33 @@
+{
+    "name": "magmodules/sw-distance-based-shipping-cost",
+    "description": "Shopware 6 Shipping Cost Based on Distance Plugin",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "version": "1.0.0",
+    "extra": {
+        "shopware-plugin-class": "Magmodules\\DistanceBasedShippingCost\\MagmodulesDistanceBasedShippingCost",
+        "plugin-icon": "src/Resources/public/img/plugin.jpg",
+        "label": {
+            "de-DE": "Shipping Cost Based on Distance",
+            "en-GB": "Shipping Cost Based on Distance"
+        },
+        "description": {
+            "de-DE": "Calculate shipping cost based on distance from store.",
+            "en-GB": "Calculate shipping cost based on distance from store."
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Magmodules\\DistanceBasedShippingCost\\": "src/"
+        }
+    },
+    "require": {
+        "shopware/core": "6.4.*",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest",
+        "phpstan/phpstan": "^1.4",
+        "pestphp/pest": "^1.21"
+    }
+}

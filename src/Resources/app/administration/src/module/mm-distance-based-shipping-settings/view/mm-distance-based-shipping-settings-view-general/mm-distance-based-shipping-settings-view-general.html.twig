@@ -1,0 +1,44 @@
+{% block mm_distance_based_shipping_settings_view_general %}
+
+    <div class="mm-distance-based-shipping-settings-view-general">
+
+        <sw-card v-if="config !== null">
+
+                <sw-switch-field
+                    v-model="config.enabled"
+                    class="mm-distance-based-shipping-settings-enabled__input"
+                    :label="$tc('mm-distance-based-shipping-settings.page.general.labelEnabled')"
+                    size="default"
+                />
+
+                <sw-text-field
+                    v-model="config.googleMapsApiKey"
+                    class="mm-distance-based-shipping-settings-google-maps-api-key__input"
+                    :label="$tc('mm-distance-based-shipping-settings.page.general.labelGmapsApiKey')"
+                    size="default"
+                />
+
+                <sw-text-field
+                    v-model="config.storeAddress"
+                    class="mm-distance-based-shipping-settings-store-address__input"
+                    :label="$tc('mm-distance-based-shipping-settings.page.general.labelStoreAddress')"
+                    size="default"
+                />
+
+                <div class="mm-distance-based-shipping-settings_view_general__save-action_container">
+                    <sw-button-process
+                        class="mm-distance-based-shipping-settings_view_general__save-action"
+                        :is-loading="isLoading"
+                        :process-success="isSaveSuccessful"
+                        :disabled="isLoading"
+                        variant="primary"
+                        @process-finish="saveFinish"
+                        @click="onSave"
+                    >
+                        {{ $tc('mm-distance-based-shipping-settings.common.buttonSave') }}
+                    </sw-button-process>
+                </div>
+
+        </sw-card>
+    </div>
+{% endblock %}

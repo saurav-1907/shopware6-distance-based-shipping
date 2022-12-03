@@ -1,0 +1,83 @@
+{% block sw_dashboard_index_content_info_grid %}
+
+    {% parent %}
+
+    <div class="mm-dashboard-card__grid-container">
+
+        <sw-card>
+            <sw-container columns="2fr 1fr">
+                <sw-card-section class="plugin-info" divider="right" slim>
+
+                    <sw-container
+                        v-if="!extension.label"
+                        justify="center"
+                        align="center"
+                    >
+                        <sw-loader size="30px"/>
+                    </sw-container>
+
+                    <div v-else>
+                        <sw-container
+                            columns="80px 1fr max-content"
+                            gap="0px 30px">
+                            <img class="sw-dashboard-index__card-img"
+                                 :src="extension.logo"
+                                 alt="plugin logo">
+                            <div>
+                                <h2 class="sw-dashboard-index__card-title">{{ extension.label }}</h2>
+                                <p>{{ extension.description }}</p>
+                            </div>
+                        </sw-container>
+
+                        <div class="sw-dashboard-index__card-meta-container">
+                            <sw-card-section class="sw-dashboard-index__card-meta" divider="right" slim>
+                                <b>Plugin state:</b> {{ $tc(`mm-dashboard.plugin.active__${isInstalled}`) }}
+                            </sw-card-section>
+                            <sw-card-section class="sw-dashboard-index__card-meta" divider="right" slim>
+                                <b>Plugin version:</b> {{ extension.version }}
+                            </sw-card-section>
+                            <sw-card-section class="sw-dashboard-index__card-meta" slim>
+                                <b>Supports:</b> {{ extension.minSupport }}
+                            </sw-card-section>
+                        </div>
+                    </div>
+                </sw-card-section>
+
+                <sw-card-section
+                    slim secondary>
+                    <div class="company-info">
+                        <div>developed by</div>
+                        <h1 class="sw-dashboard-index__card-company-name">Magmodules</h1>
+                        <div>www.magmodules.com</div>
+                        <div>Copyright &copy; 2022</div>
+                    </div>
+                </sw-card-section>
+
+            </sw-container>
+        </sw-card>
+
+        <div class="mm-dashboard-card__grid">
+            <div class="mm-dashboard-card__card"
+                 v-for="card in cards"
+            >
+                <img class="mm-dashboard-card__cover-image"
+                     :src="card.imageSrc"
+                     alt="Magmodules Distance Based image"
+                />
+                <h3 class="mm-dashboard-card__title">
+                    {{ card.title }}
+                </h3>
+                <p class="mm-dashboard-card__description">
+                    {{ card.description }}
+                </p>
+                <sw-button class="mm-dashboard-card__button"
+                           variant="default"
+                           :routerLink="card.button.routerLink"
+                           :link="card.button.link">
+                    {{ card.button.label }}
+                </sw-button>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

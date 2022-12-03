@@ -1,0 +1,49 @@
+{% block mm_distance_based_shipping_settings_view_shipping %}
+
+    <div class="mm-distance-based-shipping-settings-view-shipping">
+        <sw-card v-if="shippingConfig !== null">
+            <sw-entity-single-select
+                v-model="shippingConfig.shippingMethodId"
+                entity="shipping_method"
+                size="default"
+                :label="$tc('mm-distance-based-shipping-settings.page.shipping.labelShippingMethod')"
+                show-clearable-button
+            />
+
+            <sw-select-field
+                v-model="shippingConfig.metric"
+                class="mm-distance-based-shipping-settings-metric__input"
+                :label="$tc('mm-distance-based-shipping-settings.page.shipping.labelMetric')"
+                size="default"
+            >
+                <option
+                    v-for="metricOption in metricOptions"
+                    :key="metricOption.value"
+                    :value="metricOption.value"
+                >
+                    {{ metricOption.name }}
+                </option>
+            </sw-select-field>
+
+            <div class="mm-distance-based-shipping-settings_view_shipping__save-action_container">
+                <sw-button-process
+                    class="mm-distance-based-shipping-settings_view_shipping__save-action"
+                    :is-loading="isLoading"
+                    :process-success="isSaveSuccessful"
+                    :disabled="isLoading"
+                    variant="primary"
+                    @process-finish="saveFinish"
+                    @click="onSave"
+                >
+                    {{ $tc('mm-distance-based-shipping-settings.common.buttonSave') }}
+                </sw-button-process>
+            </div>
+        </sw-card>
+
+        <sw-card>
+            <label>{{ $tc('mm-distance-based-shipping-settings.page.shipping.labelShippingPrice') }}</label>
+            <mm-distance-based-shipping-settings-view-shipping-price/>
+        </sw-card>
+
+    </div>
+{% endblock %}

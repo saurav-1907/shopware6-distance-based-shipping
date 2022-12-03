@@ -1,0 +1,25 @@
+{
+    "mm-dashboard": {
+        "plugin": {
+            "active__true": "Active",
+            "active__false": "Inactive"
+        },
+        "cards": {
+            "general": {
+                "title": "General Settings",
+                "description": "Set up your store address, Google Maps API key, etc",
+                "button-label": "Configure General Settings"
+            },
+            "shipping": {
+                "title": "Shipping Settings",
+                "description": "Choose shipping method, distance unit, set up price matrix.",
+                "button-label": "Configure Shipping Settings"
+            },
+            "support": {
+                "title": "Plugin Support",
+                "description": "If you need any help regarding the plugin, don't hesitate to contact us.",
+                "button-label": "Get Support"
+            }
+        }
+    }
+}

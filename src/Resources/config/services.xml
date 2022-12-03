@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service
+            id="Magmodules\DistanceBasedShippingCost\Core\Content\MagmodulesDistanceBasedShippingCost\MagmodulesDistanceBasedShippingCostDefinition">
+            <tag name="shopware.entity.definition" entity="mm_distance_based_shipping_cost"/>
+        </service>
+
+        <service
+            id="Magmodules\DistanceBasedShippingCost\Core\Content\MagmodulesDistanceBasedShippingCostMatrix\MagmodulesDistanceBasedShippingCostMatrixDefinition">
+            <tag name="shopware.entity.definition" entity="mm_distance_based_shipping_price_matrix"/>
+        </service>
+
+        <service id="Magmodules\DistanceBasedShippingCost\Service\ConfigService">
+            <argument type="service" id="mm_distance_based_shipping_cost.repository"/>
+        </service>
+
+        <service id="Magmodules\DistanceBasedShippingCost\Service\GoogleMapsApiService">
+            <argument type="service" id="shopware.update.http.client"/>
+            <argument type="service" id="cache.object"/>
+        </service>
+
+        <service id="Magmodules\DistanceBasedShippingCost\Service\ShippingPriceCalculator">
+            <argument type="service" id="Magmodules\DistanceBasedShippingCost\Service\ConfigService"/>
+            <argument type="service" id="mm_distance_based_shipping_price_matrix.repository"/>
+            <argument type="service" id="Magmodules\DistanceBasedShippingCost\Service\GoogleMapsApiService"/>
+        </service>
+
+        <service id="Magmodules\DistanceBasedShippingCost\Subscriber\CheckoutConfirmPageLoadedEventSubscriber">
+            <tag name="kernel.event_subscriber"/>
+            <argument type="service" id="Magmodules\DistanceBasedShippingCost\Service\ConfigService"/>
+            <argument type="service" id="Magmodules\DistanceBasedShippingCost\Service\GoogleMapsApiService"/>
+        </service>
+
+        <service id="Magmodules\DistanceBasedShippingCost\Core\Checkout\Cart\Delivery\DeliveryCalculatorDecorator"
+                 decorates="Shopware\Core\Checkout\Cart\Delivery\DeliveryCalculator">
+            <argument type="service" id=".inner"/>
+            <argument type="service" id="Magmodules\DistanceBasedShippingCost\Service\ShippingPriceCalculator"/>
+            <argument type="service" id="mm_distance_based_shipping_cost.repository"/>
+            <argument type="service" id="Shopware\Core\Checkout\Cart\Price\QuantityPriceCalculator"/>
+        </service>
+    </services>
+</container>
